@@ -39,12 +39,14 @@ Custom Camera Cell
 | ------------- |
 | ![Like Line](Images/custom_cameracell.gif)
 
-## Requirements 
+## Installation 
+
+### Requirements 
 
 - Swift 4.0 ( Swift 3.0 -> use 'version 1.2.7' )
 - iOS 9.1 (live photos)
 
-## Installation 
+### Cocoapods
 
 TLPhotoPicker is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
@@ -53,7 +55,19 @@ it, simply add the following line to your Podfile:
 platform :ios, '9.1'
 pod "TLPhotoPicker"
 ```
-Don't forget the Privacy Description in `info.plist`.
+
+### Carthage
+
+Carthage is a simple, decentralized dependency manager for Cocoa.
+
+Specify TLPhotoPicker into your project's Cartfile:
+
+```
+github "tilltue/TLPhotoPicker"
+```
+
+
+> Don't forget the Privacy Description in `info.plist`.
 <img src="./Images/Privacy.png">
 
 ## Usage 
@@ -218,6 +232,14 @@ class CustomPhotoPickerViewController: TLPhotosPickerViewController {
     func customAction() {
         self.dismiss(animated: true, completion: nil)
     }
+}
+
+//for log
+public protocol TLPhotosPickerLogDelegate: class {
+    func selectedCameraCell(picker: TLPhotosPickerViewController)
+    func deselectedPhoto(picker: TLPhotosPickerViewController, at: Int)
+    func selectedPhoto(picker: TLPhotosPickerViewController, at: Int)
+    func selectedAlbum(picker: TLPhotosPickerViewController, title: String, at: Int)
 }
 
 ```
