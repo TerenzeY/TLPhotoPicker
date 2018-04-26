@@ -135,6 +135,7 @@ open class TLPhotoCollectionViewCell: UICollectionViewCell {
         }
         self.livePhotoView?.isHidden = true
         self.livePhotoView?.stopPlayback()
+        self.livePhotoView?.delegate = nil
     }
     
     deinit {
@@ -155,7 +156,9 @@ open class TLPhotoCollectionViewCell: UICollectionViewCell {
     
     override open func prepareForReuse() {
         super.prepareForReuse()
+        stopPlay()
         self.livePhotoView?.isHidden = true
+        self.livePhotoView?.delegate = nil
         self.durationView?.isHidden = true
         self.durationView?.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
         self.selectedHeight?.constant = 10
